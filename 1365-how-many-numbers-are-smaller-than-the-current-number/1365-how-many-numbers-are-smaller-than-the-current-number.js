@@ -1,6 +1,7 @@
 var smallerNumbersThanCurrent = function (nums) {
     let sortedArray = [...nums].sort((a, b) => a - b);
     const storage = new Map();
+    const retArr = [];
     
     for (const [index, element] of sortedArray.entries()) {
         if(!storage.has(element)) {
@@ -9,9 +10,9 @@ var smallerNumbersThanCurrent = function (nums) {
         storage.set(element, index);
     }
     
-    for (const [index, element] of nums.entries()) {
-        nums[index] = storage[element];
+    for(let num of nums){
+        retArr.push(storage[num]);
     }
 
-    return nums;
+    return retArr;
 };
